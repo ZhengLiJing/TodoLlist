@@ -12,16 +12,16 @@ webpack+vue搭建的todolist
 ```
 // 安装依赖
 npm install
-
 ```
+
 <h2 align="center">Usage</h2>
 
 ```
 // 启动服务器浏览
 npm run dev
 浏览器自动打开浏览：http://0.0.0.0:8001/
-
 ```
+
 <h2 align="center">生产环境<h2>
 
 ```
