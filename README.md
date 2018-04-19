@@ -22,7 +22,7 @@ npm run dev
 浏览器自动打开浏览：http://0.0.0.0:8001/
 ```
 
-<h2 align="center">build<h2>
+<h2 align="center">build</h2>
 
 ```
 // 生成线上代码
