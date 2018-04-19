@@ -1,6 +1,6 @@
 <template>
   <header class="main-header">
-    <h1>JTodo</h1>
+    <h2>我的待办事项</h2>
   </header>
 </template>
 
@@ -8,9 +8,9 @@
 .main-header {
     text-align: center;
 
-    h1 {
-        font-size: 100px;
-        color: rgba(175, 47, 47, 0.4);
+    h2 {
+        font-size: 60px;
+        color: rgba(145, 67, 47, 0.4);
         font-weight: 100;
         margin: 20px;
     }
