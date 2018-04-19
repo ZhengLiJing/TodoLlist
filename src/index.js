@@ -4,7 +4,10 @@ import App from './app.vue';
 import './assets/styles/global.styl';
 
 
+// const root = document.createElement('div');
+// document.body.appendChild(root);
 const root = document.createElement('div');
+root.setAttribute('id', 'myApp');
 document.body.appendChild(root);
 
 
