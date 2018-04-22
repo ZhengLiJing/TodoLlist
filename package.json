@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
@@ -35,6 +40,7 @@
     "webpack-dev-server": "2.9.7"
   },
   "devDependencies": {
-    "clean-webpack-plugin": "^0.1.19"
+    "clean-webpack-plugin": "^0.1.19",
+    "style-loader": "^0.19.1"
   }
 }
