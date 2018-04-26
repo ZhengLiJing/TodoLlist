@@ -92,4 +92,43 @@
         ]
     };
 
-#### 
+------
+
+#### js-exclude
+	{
+       test: /\.jsx$/,
+       loader: 'babel-loader',
+       exclude: 'node_modules'
+     },
+     
+#### CleanWebpackPlugin   
+  
+	// 对于dist目录，我放在根目录下webpack提示在项目	,所以我放在到build下。
+	//clean-webpack-plugin: /Users/zhenglijing/Desktop/FED/todoList/dist is outside of the 		project root. Skipping...
+	
+	let pathsToClean = [
+    	'dist',
+  	];
+	new CleanWebpackPlugin(pathsToClean)
+	
+#### webpack-merge
+	// 开发环境
+	const baseConfig = require('./webpack.config.base.js');
+	const isDev = process.env.NODE_ENV === "development";
+	const defaultPlugin = [
+		new webpack.DefinePlugin({
+			"process.env": {
+				NODE_ENV: isDev ? "development" : "production"
+			}
+		})
+	]
+	let config;
+	config = merge(baseConfig, {
+		module: {
+			rules: [ ]
+		},
+		devtool: '#cheap-module-eval-source-map',
+		devServer,
+		plugins: defaultPlugin.concat.([ ])
+	})
+	
