@@ -1,78 +1,78 @@
 <template>
     <section class="real-app">
-        <input 
+        <input
             type="text"
             class="add-input"
             autofocus="autofocus"
-            placeholder="接下来想要做什么？"
+            placeholder="next thing you wannna do"
             @keyup.enter="addTodo"
         >
         <item 
-            :todo="todo"
             v-for="todo in filterTodos"
             :key="todo.id"
-            @del="deleTodo"
-        />
-        <tabs 
-            @toggle="toggleFilter"
-            @clearCompleted="clearAllCompleted"
-            :filter="filter"
+            :todo="todo"
+            @deleItem="deleteItem"
+         />
+         <tab 
             :todos="todos"
-        />
+            :filter="filter"
+            @toggle="toggleFilter"
+            @clear="clearAllItem"
+         />
     </section>
 </template>
+
 <script>
 import Item from "../todo/item.vue";
-import Tabs from "../todo/tabs.vue";
+import Tab from "../todo/tab.vue";
+
 let id = 0;
 export default {
   components: {
     Item,
-    Tabs
+    Tab
   },
   data() {
     return {
       todos: [],
       filter: "all"
+      //   filterTodos: []
     };
   },
   computed: {
     filterTodos() {
       if (this.filter === "all") {
         return this.todos;
+      } else if (this.filter === "active") {
+        return this.todos.filter(todo => !todo.completed);
+      } else {
+        return this.todos.filter(todo => todo.completed);
       }
-      const completed = this.filter === "completed"; // 完成为true
-      // 返回过滤后的数组，当filter为complted，则说明已完成，返回已完成的数组
-      // 当filter为active, 则未完成，返回未完成的数组
-      return this.todos.filter(todo => todo.completed === completed);
     }
   },
   methods: {
     addTodo(e) {
-      let value = e.target.value.trim();
-      if (value) {
-        this.todos.unshift({
-          id: id++,
-          content: e.target.value.trim(),
-          completed: false
-        });
-      }
+      const val = e.target.value;
+      this.todos.push({
+        id: id++,
+        value: val.trim(),
+        completed: false
+      });
       e.target.value = "";
     },
-    deleTodo(id) {
+    deleteItem(id) {
       this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1);
     },
     toggleFilter(state) {
       this.filter = state;
     },
-    clearAllCompleted() {
-      this.todos = this.todos.filter(todo => {
-        return !todo.completed;
-      });
+    clearAllItem() {
+        this.todos = [];
     }
   }
 };
 </script>
+
 <style lang="stylus" scoped>
 .real-app {
     width: 600px;
