@@ -1,8 +1,12 @@
 const path = require('path');
+const createVueLoaderConfig = require('./vue-loader.config.js');
+const isDev = process.env.NODE_ENV === "development";
+
+
 
 const config = {
     target: "web",
-    entry: path.resolve(__dirname, '../src/index.js'),
+    entry: path.resolve(__dirname, '../client/index.js'),
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'build-[hash:8].js'
@@ -10,17 +14,24 @@ const config = {
     module: {
         rules: [
             {
+                test: /\.(vue|js|jsx)$/,
+                loader: 'eslint-loader',
+                enforce: 'pre',
+                exclude: /node_modules/
+            },
+            {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+                options: createVueLoaderConfig(isDev)
             },
             {
                 test: /\.jsx$/,
                 loader: 'babel-loader',
-                exclude: path.resolve(__dirname, 'node_modules')
             },
             {
                 test: /\.js$/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                exclude: path.resolve(__dirname, 'node_modules')
             },
             {
                 test: /\.(png|jpe?g|svg|gif)$/,

@@ -21,35 +21,34 @@
 
 <script>
 export default {
-    props: {
-        todos: {
-            type: Array,
-            require: true
-        },
-        filter: {
-            type: String,
-            require: true
-        }
+  props: {
+    todos: {
+      type: Array,
+      require: true
     },
-    data() {
-        return {
-            states: ['all', 'active', 'completed']
-        }
-    },
-    methods: {
-        clearAllCompleted() {
-            this.$emit('clear');
-        },
-        toggleFilter(state) {
-            this.$emit('toggle', state)
-        }
-    },
-    computed: {
-        unfinished() {
-            return this.todos.filter(todo => !todo.completed).length;
-            
-        }
+    filter: {
+      type: String,
+      require: true
     }
+  },
+  data () {
+    return {
+      states: ['all', 'active', 'completed']
+    }
+  },
+  methods: {
+    clearAllCompleted () {
+      this.$emit('clear')
+    },
+    toggleFilter (state) {
+      this.$emit('toggle', state)
+    }
+  },
+  computed: {
+    unfinished () {
+      return this.todos.filter(todo => !todo.completed).length
+    }
+  }
 }
 </script>
 

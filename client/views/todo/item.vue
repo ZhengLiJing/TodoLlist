@@ -12,20 +12,20 @@
 
 <script>
 export default {
-    props: {
-        todo: {
-            type: Object,
-            require: true
-        }
-    },
-    data() {
-        return {}
-    },
-    methods: {
-        deleItem() {
-            this.$emit('deleItem', this.todo.id)
-        }
+  props: {
+    todo: {
+      type: Object,
+      require: true
     }
+  },
+  data () {
+    return {}
+  },
+  methods: {
+    deleItem () {
+      this.$emit('deleItem', this.todo.id)
+    }
+  }
 }
 </script>
 
@@ -71,10 +71,10 @@ export default {
         padding-left 5px
         cursor pointer
         &:after{
-            content: url('/src/assets/images/round.svg')
+            content: url('../../assets/images/round.svg')
         }
         &:checked:after{
-            content: url('/src/assets/images/done.svg')
+            content: url('../../assets/images/done.svg')
         }
     }
     .destroy{

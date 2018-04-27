@@ -8,25 +8,24 @@
 </template>
 
 <script>
-import Head from '../todo/head.vue';
-import Todo from '../todo/todo.vue';
-import Footer from '../todo/footer.jsx';
-
+import Head from './layout/head.vue'
+import Todo from './views/todo/todo.vue'
+import Footer from './layout/footer.jsx'
 
 export default {
-    components: {
-        Head,
-        Todo,
-        Footer
-    },
-    data() {
-        return {
-            message: 'nihaoa'
-        }
-    },
-    methods: {
-        addTodo() {}
+  components: {
+    Head,
+    Todo,
+    Footer
+  },
+  data () {
+    return {
+      message: 'nihaoa'
     }
+  },
+  methods: {
+    addTodo () {}
+  }
 }
 </script>
 

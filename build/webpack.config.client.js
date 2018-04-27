@@ -59,19 +59,19 @@ if(isDev) {
         plugins: defaultPlugin.concat([
             new webpack.HotModuleReplacementPlugin(),
             new webpack.NoEmitOnErrorsPlugin(),
-            new CleanWebpackPlugin(path.resolve(__dirname, 'dist'))
+            // new CleanWebpackPlugin(path.resolve(__dirname, 'dist'))
         ])
     })
 } else {
     config = merge(baseConfig, {
         entry: {
-            app: path.resolve(__dirname, '../src/index.js'),
+            app: path.resolve(__dirname, '../client/index.js'),
             vendor: ['vue']
         },
         output: {
             filename: '[name].[chunkhash:5].js'
         },
-        module: {            
+        module: {      
             rules: [
                 {
                     test: /\.styl/,
@@ -92,8 +92,10 @@ if(isDev) {
             ]
         },
         plugins: defaultPlugin.concat([
-            new ExtractPlugin('style.[contentHash:8].css'),
-            new CleanWebpackPlugin(pathsToClean),
+            new ExtractPlugin({
+                filename: 'style.[contentHash:8].css'
+            }),
+            // new CleanWebpackPlugin(pathsToClean),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor'
             }),

@@ -23,54 +23,54 @@
 </template>
 
 <script>
-import Item from "../todo/item.vue";
-import Tab from "../todo/tab.vue";
+import Item from './item.vue'
+import Tab from './tab.vue'
 
-let id = 0;
+let id = 0
 export default {
   components: {
     Item,
     Tab
   },
-  data() {
+  data () {
     return {
       todos: [],
-      filter: "all"
+      filter: 'all'
       //   filterTodos: []
-    };
+    }
   },
   computed: {
-    filterTodos() {
-      if (this.filter === "all") {
-        return this.todos;
-      } else if (this.filter === "active") {
-        return this.todos.filter(todo => !todo.completed);
+    filterTodos () {
+      if (this.filter === 'all') {
+        return this.todos
+      } else if (this.filter === 'active') {
+        return this.todos.filter(todo => !todo.completed)
       } else {
-        return this.todos.filter(todo => todo.completed);
+        return this.todos.filter(todo => todo.completed)
       }
     }
   },
   methods: {
-    addTodo(e) {
-      const val = e.target.value;
+    addTodo (e) {
+      const val = e.target.value
       this.todos.push({
         id: id++,
         value: val.trim(),
         completed: false
-      });
-      e.target.value = "";
+      })
+      e.target.value = ''
     },
-    deleteItem(id) {
-      this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1);
+    deleteItem (id) {
+      this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
     },
-    toggleFilter(state) {
-      this.filter = state;
+    toggleFilter (state) {
+      this.filter = state
     },
-    clearAllItem() {
-        this.todos = [];
+    clearAllItem () {
+      this.todos = []
     }
   }
-};
+}
 </script>
 
 <style lang="stylus" scoped>
