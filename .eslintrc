@@ -1,7 +1,10 @@
 {
-    "extends": "standard",
+    "extends": "eslint:recommended",
     "plugins": [
         "html"
     ],
-    "parser": "babel-eslint"
+	"parser": "babel-eslint",
+	"globals": {
+		"document": true
+	}
 }
