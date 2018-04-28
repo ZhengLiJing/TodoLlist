@@ -298,3 +298,14 @@
 	git 提交前的检测代码,将错误固定在本地仓库，不会将错误带入远程仓库。
 	1. 安装 cnpm i -D husky
 	2. "precommit": "npm run eslint" or "precommit": "npm run eslint:fix"
+
+#### vue
+	1. webpack.confit.practice.js
+		resolve: {
+			alias: {
+				'vue': path.join(__dirname, '../node_modules/vue/dist/vue.esm')
+			}
+		},
+		(1). 默认情况下，import Vue是vue.runtime.common.js
+		(2). 开发环境下，vue.runtime.esm.js
+		(3). 真实环境, vue.runtime.min.js

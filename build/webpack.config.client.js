@@ -2,7 +2,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractPlugin = require('extract-text-webpack-plugin');
 const baseConfig = require('./webpack.config.base.js');
 const merge = require('webpack-merge');
@@ -17,10 +16,6 @@ const defaultPlugin = [
     }),
     new HtmlWebpackPlugin()
 ];
-
-let pathsToClean = [
-    'dist',
-  ]
 
 const devServer = {
     port: 8001,
@@ -71,7 +66,7 @@ if(isDev) {
         output: {
             filename: '[name].[chunkhash:5].js'
         },
-        module: {      
+        module: {
             rules: [
                 {
                     test: /\.styl/,

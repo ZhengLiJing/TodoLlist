@@ -5,6 +5,10 @@
     ],
 	"parser": "babel-eslint",
 	"globals": {
-		"document": true
+		"document": true,
+		"require": true,
+		"process": true,
+		"__dirname": true,
+		"module": true
 	}
 }
