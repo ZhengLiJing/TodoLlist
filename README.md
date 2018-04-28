@@ -278,7 +278,7 @@
                 },
 		4. example of correct code of this rule with broser environment:
 			/*eslint no-undef: "error"*/
-			*eslint-env browser*/		
+			*eslint-env browser*/
 
 #### 结尾换行
     window: CRLF
@@ -333,3 +333,35 @@
 				template: '<div></div>
 			})
 			app.$mount('#root')
+	5. lifecycle
+		beforeCreate this.$el为undefined
+		created this.$el为undefined
+		beforeMount(挂载元素到节点前)<div id="root"></div>
+		mounted(替换根节点)<div>0</div>
+
+		(1). 因为beforeCreate和created时，元素节点为undefined
+			所以，此时不适合操作DOM，通常操作DOM放在mounted上。
+		(2). 跟数据相关的可以放在created和mounted上都行
+		(3). 服务端渲染只会触发beforeCreate和create ，
+			因为mounted是和DOM相关的，服务器端没有DOM，所以不会
+			触发beforeMount和mounted生命周期函数
+		(4). render(h) {
+				return h('div', {}, this.text)
+			}
+			h相当于createElement()方法，执行的时机是
+			在beforeMount和mounted之间
+		(5). 使用vue-laoder将template都转换为render function
+		(6). renderError开发时使用，便于发现错误，只对本组件有用，
+			对于其可以有的子组件不起作用。
+		(7). errorCaptured,可以用在正式开发环境，捕获线上所有的错误
+			会向上冒泡。正式环境可以使用。
+
+		beforeUpdate
+		updatedd
+
+		deactivated
+		activated
+
+		beforeDestroy
+		destroyed
+
