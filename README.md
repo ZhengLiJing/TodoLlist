@@ -228,7 +228,7 @@
     }
     // client-assets-styles--footer-2tEqU
 
-    #### eslint
+#### eslint
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-html": "^4.0.3",
@@ -276,6 +276,9 @@
                     loader: 'vue-loader',
                     options: createVueLoaderConfig(isDev)
                 },
+		4. example of correct code of this rule with broser environment:
+			/*eslint no-undef: "error"*/
+			*eslint-env browser*/		
 
 #### 结尾换行
     window: CRLF
@@ -318,4 +321,15 @@
 			template: path.join(__dirname, '../index.html')
 		})
 		<div id="root"></div>
-
+	4.
+		将Vue实例挂载到HTML节点上
+		（1).
+			new Vue({
+				el: '#root',
+				template: '<div></div>
+			})
+		(2).
+			const app = new Vue({
+				template: '<div></div>
+			})
+			app.$mount('#root')

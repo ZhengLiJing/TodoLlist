@@ -4,11 +4,15 @@
         "html"
     ],
 	"parser": "babel-eslint",
+	"rules": {
+		"no-console": "off"
+	},
 	"globals": {
 		"document": true,
 		"require": true,
 		"process": true,
 		"__dirname": true,
-		"module": true
+		"module": true,
+		"setInterval": true
 	}
 }
