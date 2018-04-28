@@ -15,8 +15,8 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.client.js",
     "clean": "rimraf dist",
     "eslint": "eslint --ext .js --ext .vue --ext jsx client/",
-	"eslint:fix": "eslint --fix --ext .js --ext .vue --ext jsx client/",
-	"precommit": "npm run eslint"
+    "eslint:fix": "eslint --fix --ext .js --ext .vue --ext jsx client/",
+    "precommit": "npm run eslint"
   },
   "author": "",
   "license": "ISC",

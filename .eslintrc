@@ -1,7 +1,14 @@
 {
-    "extends": "standard",
+    "extends": "eslint:recommended",
     "plugins": [
         "html"
     ],
-    "parser": "babel-eslint"
+	"parser": "babel-eslint",
+	"globals": {
+		"document": true,
+		"require": true,
+		"process": true,
+		"__dirname": true,
+		"module": true
+	}
 }
