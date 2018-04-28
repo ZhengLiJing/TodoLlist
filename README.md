@@ -309,3 +309,13 @@
 		(1). 默认情况下，import Vue是vue.runtime.common.js
 		(2). 开发环境下，vue.runtime.esm.js
 		(3). 真实环境, vue.runtime.min.js
+		runtime版本不允许写在Vue实例中写template模板。
+	2. package.json
+		"practice": "cross-env NODE_ENV=development webpack-dev-server --config
+					webpack.config.practice.js"
+	3. const HtmlWebpackPlugin = require('html-webpack-plugin')
+		HtmlWebpackPlugin({
+			template: path.join(__dirname, '../index.html')
+		})
+		<div id="root"></div>
+

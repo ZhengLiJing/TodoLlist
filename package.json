@@ -16,12 +16,13 @@
     "clean": "rimraf dist",
     "eslint": "eslint --ext .js --ext .vue --ext jsx client/",
 	"eslint:fix": "eslint --fix --ext .js --ext .vue --ext jsx client/",
-	"precommit": "npm run eslint"
+	"precommit": "npm run eslint",
+	"practice": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.practice.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    
+
   },
   "devDependencies": {
     "autoprefixer": "7.2.3",

@@ -11,7 +11,9 @@ const defaultPlugin = [
             NODE_ENV: '"development"'
         }
     }),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+		template: path.join(__dirname, '../index.html')
+	})
 ];
 
 const devServer = {
@@ -56,7 +58,6 @@ config = merge(baseConfig, {
 	plugins: defaultPlugin.concat([
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoEmitOnErrorsPlugin(),
-		// new CleanWebpackPlugin(path.resolve(__dirname, 'dist'))
 	])
 })
 
