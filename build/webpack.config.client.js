@@ -53,7 +53,7 @@ if (isDev) {
     devServer,
     plugins: defaultPlugin.concat([
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoEmitOnErrorsPlugin()
+    //   new webpack.NoEmitOnErrorsPlugin()
       // new CleanWebpackPlugin(path.resolve(__dirname, 'dist'))
     ])
   })
@@ -61,7 +61,7 @@ if (isDev) {
   config = merge(baseConfig, {
     entry: {
       app: path.resolve(__dirname, '../client/index.js'),
-      vendor: ['vue']
+    //   vendor: ['vue']
     },
     output: {
       filename: '[name].[chunkhash:5].js'
@@ -85,18 +85,24 @@ if (isDev) {
           })
         }
       ]
-    },
+	},
+	optimization: {
+		splitChunks: {
+			chunks: 'all'
+		},
+		runtimeChunk: true
+	},
     plugins: defaultPlugin.concat([
       new ExtractPlugin({
-        filename: 'style.[contentHash:8].css'
+        filename: '[name]-style.css'
       }),
       // new CleanWebpackPlugin(pathsToClean),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor'
-      }),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'runtime'
-      })
+    //   new webpack.optimize.CommonsChunkPlugin({
+    //     name: 'vendor'
+    //   }),
+    //   new webpack.optimize.CommonsChunkPlugin({
+    //     name: 'runtime'
+    //   })
     ])
   })
 }

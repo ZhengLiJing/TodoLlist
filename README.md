@@ -298,3 +298,43 @@
 	git 提交前的检测代码,将错误固定在本地仓库，不会将错误带入远程仓库。
 	1. 安装 cnpm i -D husky
 	2. "precommit": "npm run eslint" or "precommit": "npm run eslint:fix"
+
+---------
+
+#### upgrade to webpack4
+
+	1. npm rm -D webpack webpack-dev-server webpack-merge webpack-cli
+	2. npm i -D webpack webpack-dev-server webpack-merge
+	3. npm rm -D babel-loader file-loader html-webpack-plugin extract-text-webpack-plugin
+	4. npm i -D babel-loader file-loader html-webpack-plugin extract-text-webpack-plugin
+	5. npm i -D stylus-loader vue-loader
+	6.
+		// webpack.config.base.js
+		mode: process.env.NODE_ENV || 'production',
+	7.
+		// webpack.config.client.js
+		注释掉
+			//   new webpack.optimize.CommonsChunkPlugin({
+			//     name: 'vendor'
+			//   }),
+			//   new webpack.optimize.CommonsChunkPlugin({
+			//     name: 'runtime'
+			//   })
+		//   vendor: ['vue']
+		//   new webpack.NoEmitOnErrorsPlugin()
+
+		加入
+			optimization: {
+				splitChunks: {
+					chunks: 'all'
+				},
+				runtimeChunk: true
+			}
+	8.
+		plugins: defaultPlugin.concat([
+			new ExtractPlugin({
+				// 这里不知道为什么不能使用[name]-[contentchunk:5]
+				// 改用下面就可以了。
+				filename: '[name]-style.css'
+			}),
+		])

@@ -75,20 +75,10 @@ if(isDev) {
         app: path.resolve(__dirname, './src/index.js'),
         vendor: ['vue']
     };
-    config.output.filename = '[name].[chunkhash:5].js';
+    config.output.filename = '[name].[contenthash:5].js';
     config.module.rules.push({
         test: /\.styl$/,
         fallback: 'style-loader',
-        use: [
-            'css-loader',
-            {
-                loader: 'postcss-loader',
-                options: {
-                    sourceMap: true
-                }
-            },
-            'stylus-loader'
-        ],
         use: ExtractPlugin.extract({
             fallback: 'style-loader',
             use: [
@@ -105,7 +95,7 @@ if(isDev) {
         })
     });
     config.plugins.push(
-        new ExtractPlugin('style.[contentHash:8].css'),
+        new ExtractPlugin('style.[contenthash:8].css'),
         new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor'
