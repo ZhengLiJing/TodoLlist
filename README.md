@@ -365,3 +365,26 @@
 		beforeDestroy
 		destroyed
 
+#### 碰到包未找到，可以尝试将node_modules删除，重新安装
+
+#### vu-bind
+	1.
+	// 注意 text-danger需要使用单引号括起来
+	<div
+		:class="{active: isActive, 'texts-dander': hasError}"
+	>
+	2.
+	<div
+		:class="[classA, classB]"
+	>
+
+	</div>
+	3.
+	模板里可以调用方法，一元表达式，内置全局对象,v-bind,v-html,v-on等
+	template: `
+		<div>{{greet()}}</div>
+		<div>{{isActive ? 'hello' : 'world'}}</div>
+		<div>{{new Date()}}</div>
+
+	`
+
