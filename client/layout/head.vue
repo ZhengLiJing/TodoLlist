@@ -1,6 +1,6 @@
 <template>
     <div :class="$style.mainHead">
-        <h1>You are Just to do it!</h1>
+        <h1>You are Just to do it!!!!!</h1>
     </div>
 </template>
 <style lang="stylus" module>

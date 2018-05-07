@@ -23,7 +23,10 @@ const devServer = {
         errors: true
     },
     open: true,
-    hot: true
+	hot: true,
+	historyApiFallback: {
+		index: '/public/index.html'
+	}
 };
 
 let config;

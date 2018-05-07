@@ -1,13 +1,19 @@
 import Vue from 'vue'
 import APP from './app.vue'
+import VueRouter from 'vue-router'
 
 import './assets/styles/global.styl'
+import createRouter from './config/router'
 
-const root = document.createElement('div')
-root.setAttribute('id', 'myApp')
-document.body.appendChild(root)
+Vue.use(VueRouter)
 
+const router = createRouter()
+router.beforeEach((to,from,next) => {
+	console.log(to,from) // eslint-disable-line
+	next()
+})
 // 先在文档外渲染，之后再将它插入文档：
 new Vue({
-  render: (h) => h(APP)
-}).$mount(root)
+	router,
+render: (h) => h(APP)
+}).$mount('#root')

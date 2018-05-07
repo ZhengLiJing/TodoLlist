@@ -14,7 +14,9 @@ const defaultPlugin = [
             NODE_ENV: isDev ? '"development"' : '"production"'
         }
     }),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+		template: path.join(__dirname, '../index.html')
+	})
 ];
 
 const devServer = {
@@ -24,7 +26,11 @@ const devServer = {
         errors: true
     },
     open: true,
-    hot: true
+	hot: true,
+	// historyApiFallback: true,
+	historyApiFallback: {
+		index: '/public/index.html'
+	}
 };
 
 let config;

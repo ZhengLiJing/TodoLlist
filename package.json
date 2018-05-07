@@ -15,14 +15,14 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.client.js",
     "clean": "rimraf dist",
     "eslint": "eslint --ext .js --ext .vue --ext jsx client/",
-	"eslint:fix": "eslint --fix --ext .js --ext .vue --ext jsx client/",
-	"precommit": "npm run eslint",
-	"practice": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.practice.js"
+    "eslint:fix": "eslint --fix --ext .js --ext .vue --ext jsx client/",
+    "precommit": "npm run eslint",
+    "practice": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.practice.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "7.2.3",
@@ -30,6 +30,7 @@
     "babel-eslint": "^8.2.1",
     "babel-helper-vue-jsx-merge-props": "2.0.3",
     "babel-loader": "7.1.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-syntax-jsx": "6.18.0",
     "babel-plugin-transform-vue-jsx": "3.5.0",
     "babel-preset-env": "1.6.1",

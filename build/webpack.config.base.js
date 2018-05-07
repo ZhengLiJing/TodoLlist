@@ -5,11 +5,12 @@ const isDev = process.env.NODE_ENV === "development";
 
 
 const config = {
-    target: "web",
+	target: "web",
     entry: path.resolve(__dirname, '../client/index.js'),
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: 'build-[hash:8].js'
+		filename: 'build-[hash:8].js',
+		publicPath: '/public/'
     },
     module: {
         rules: [

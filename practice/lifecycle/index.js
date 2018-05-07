@@ -6,24 +6,24 @@ import Vue from 'vue'
 
 const app = new Vue({
 	// el: '#root',
-	// template: '<div>{{text}}</div>',
+	template: '<div>{{text}}</div>',
 	data: {
 		text: 10
 	},
 	beforeCreate() {
-		console.warn(this.$el, 'beforeCreate')
+		console.warn(this.$data, this.$el, 'beforeCreate')
 	},
 	created() {
-		console.warn(this.$el, 'created')
+		console.warn(this.$data, this.$el, 'created')
 	},
 	beforeMount() {
-		console.warn(this.$el, 'beforeMount')
+		console.warn(this.$data, this.$el, 'beforeMount')
 	},
 	mounted() {
-		console.warn(this.$el, 'mounted')
+		console.warn(this.$data, this.$el, 'mounted')
 	},
 	beforeUpdate() {
-		console.warn(this, 'beforeUpdate')
+		console.warn(this.$data, this, 'beforeUpdate')
 	},
 	updated() {
 		console.warn(this, 'updated')
@@ -40,16 +40,16 @@ const app = new Vue({
 	activated() {
 		console.warn(this, 'activated')
 	},
-	render() {
+	render(h) {
 		// throw new TypeError('render error')
 		// console.warn('render funtiona')
-		// return h('div', {}, this.text)
+		return h('div', {}, this.text)
 	},
 	renderError(h, error) {
 		return h('div', {}, error.stack)
 	},
 	errorCaptured() {
-		
+
 	}
 })
 app.$mount('#root')
